@@ -133,9 +133,17 @@
 
                  <a href="{{route('admin.slideshows.index')}}" class="block mt-1 ">
                     <li class="pl-4 text-lg py-2  hover:bg-blue-300 hover:text-gray-700 
-                    
+                    {{(request()->routeIs('admin.slideshows.*'))? "bg-[#eb8d02] text-white " : "text-slate-300"}} 
                     transition-colors ease-in-out delay-100">
                         <i class="fas fa-images"></i> &nbsp;  Slideshows
+                    </li>
+                 </a>
+
+                 <a href="{{route('admin.categories.index')}}" class="block mt-1 ">
+                    <li class="pl-4 text-lg py-2  hover:bg-blue-300 hover:text-gray-700 
+                    {{(request()->routeIs('admin.categories.*'))? "bg-[#eb8d02] text-white " : "text-slate-300"}} 
+                    transition-colors ease-in-out delay-100">
+                        <i class="fas fa-images"></i> &nbsp;  Categories
                     </li>
                  </a>
 

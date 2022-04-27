@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SlideshowController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth','isAdmin'])->name('admin.')->prefix('admin')->group(function(){
     Route::resource('slideshows',SlideshowController::class);
     Route::post('/slideshows/delete',[\App\Http\Controllers\Admin\SlideshowController::class,'delete'])->name('slideshows.delete');
+
+    Route::resource('categories',CategoryController::class);
+    Route::post('/categories/delete',[\App\Http\Controllers\Admin\CategoryController::class,'delete'])->name('categories.delete');
 });
 
 require __DIR__.'/auth.php';
