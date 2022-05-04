@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class CategoryController extends Controller
 {
@@ -96,5 +98,12 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+    public function delete(Request $request)
+    {
+        $s = Category::find($request->dataid);
+        $s->delete();
+        return redirect(route('admin.categories.index'))->with('success', 'Category Deleted Sucessfully');
+
     }
 }

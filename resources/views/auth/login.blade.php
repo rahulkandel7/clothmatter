@@ -21,7 +21,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2">
             
             <div class="bg-blue-200 p-11">
-                <img src="{{asset('images/login.png')}}">
+                {{-- <img src="{{asset('images/login.png')}}"> --}}
             </div>
             
             <!-- Login -->

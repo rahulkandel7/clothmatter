@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SlideshowController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,10 @@ Route::middleware(['auth','isAdmin'])->name('admin.')->prefix('admin')->group(fu
 
     Route::resource('categories',CategoryController::class);
     Route::post('/categories/delete',[\App\Http\Controllers\Admin\CategoryController::class,'delete'])->name('categories.delete');
+
+    Route::resource('products',ProductController::class);
+    Route::post('/products/delete',[\App\Http\Controllers\Admin\ProductController::class,'delete'])->name('products.delete');
+
 });
 
 require __DIR__.'/auth.php';

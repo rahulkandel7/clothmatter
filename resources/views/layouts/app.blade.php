@@ -37,14 +37,19 @@
                         </p>
                         <div>
                             @auth
-                            <form action="{{route('logout')}}" method="post" class="inline-block">
-                                @csrf
-                                <button type="submit" class="text-gray-600 ">
-                                    Welcome!, {{Auth::user()->name}} 
+                                <form action="{{route('logout')}}" method="post" class="inline-block">
+                                    @csrf
+                                    <button type="submit" class="text-gray-600 ">
+                                        Welcome!, {{Auth::user()->name}} 
 
-                                </button>
+                                    </button>
 
-                            </form>
+                                </form>
+                                <span class="px-2 text-gray-300">|</span>
+
+                                <a href="{{route('dashboard')}}" class="text-gray-600 ">
+                                    Dashbaord
+                                </a>
 
                             @endauth
                             @guest
