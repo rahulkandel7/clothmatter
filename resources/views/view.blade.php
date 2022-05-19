@@ -31,26 +31,53 @@
       <div x-data="{ total: 3, current: 0, open: true }" class="md:border-r-2">
         <div x-show="open" class="">
           <div class="px-4 ">
-            <img x-show="current == 0" src="{{asset('images/products/1.jpeg')}}" class=" w-full zoom1 max-h-[33rem]">
-            <img x-show="current == 1" src="{{asset('images/products/2.jpeg')}}" class=" w-full zoom2 max-h-[33rem]">
-            <img x-show="current == 2" src="{{asset('images/products/3.jpeg')}}" class=" w-full zoom3 max-h-[33rem]">
+            <img x-show="current == 0" src="/storage/{{$product->photopath1}}" class=" w-full zoom1 max-h-[33rem]">
+            <img x-show="current == 1" src="/storage/{{$product->photopath2}}" class=" w-full zoom2 max-h-[33rem]">
+            <img x-show="current == 2" src="/storage/{{$product->photopath3}}" class=" w-full zoom3 max-h-[33rem]">
           </div>
         </div>
         <div class="flex mt-10 md:mt-0">
-          <img width="100" @click="current = 0, open = true" src="{{asset('images/products/1.jpeg')}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 0, 'border-white': current != 0}">
-          <img width="100" @click="current = 1, open = true" src="{{asset('images/products/2.jpeg')}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 1, 'border-white': current != 1}">
-          <img width="100" @click="current = 2, open = true" src="{{asset('images/products/3.jpeg')}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 2, 'border-white': current != 2}">
+          <img width="100" @click="current = 0, open = true" src="/storage/{{$product->photopath1}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 0, 'border-white': current != 0}">
+          <img width="100" @click="current = 1, open = true" src="/storage/{{$product->photopath2}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 1, 'border-white': current != 1}">
+          <img width="100" @click="current = 2, open = true" src="/storage/{{$product->photopath3}}" class="m-3 rounded-lg shadow-lg" :class="{'border-2 border-yellow-300': current == 2, 'border-white': current != 2}">
         </div>
       </div>
     
       <div class="md:ml-5 mt-5 md:mt-0" >
-        <h1 class="text-4xl text-semibold mb-3">Womens Dress Name </h1>
-        <h2 class=" text-2xl line-through font-semibold text-gray-500 inline-block">Rs.1,500 /-</h2>
-        <h2 class=" text-3xl font-semibold text-red-700 inline-block ml-3">Rs.1,500 /-</h2>
+        <h1 class="text-4xl text-semibold mb-3">{{$product->name}}</h1>
+        @if($product->isDiscounted == 1) <h2 class=" text-2xl line-through font-semibold text-gray-500 inline-block">Rs.{{$product->price}} /-</h2>
+        <h2 class=" text-3xl font-semibold text-red-700 inline-block ml-3">Rs.{{$product->discountedPrice}}/-</h2> @else <h2 class=" text-3xl font-semibold text-red-700 inline-block ml-3">Rs.{{$product->price}} /-</h2> @endif
         <hr>
         
         <table>
           <tr>
+            <td>
+              <p class="text-black text-lg font-semibold mt-2">
+                Brand
+              </p>
+            </td>
+            <td>
+              <p class="text-black text-lg ml-3 mt-2">
+                {{$product->brand}} 
+              </p>
+            </td>
+          </tr>
+          <tr>
+
+            <tr>
+              <td>
+                <p class="text-black text-lg font-semibold mt-2">
+                  Category
+                </p>
+              </td>
+              <td>
+                <p class="text-black text-lg ml-3 mt-2">
+                  {{$product->category->title}}
+                </p>
+              </td>
+            </tr>
+            <tr>
+            
             <td>
               <p class="text-black text-lg font-semibold mt-2">
                 Color
@@ -58,9 +85,10 @@
             </td>
             <td>
               <select name="color" id="" class="border-0 shadow-md ml-3 mt-2">
-                <option value="">Select Color</option>
-                <option value="">Sky Blue</option>
-                <option value="">Green</option>
+                <option selected disabled>Select Color</option>
+                @foreach ($colors as $color)
+                  <option value="{{$color}}">{{$color}}</option> 
+                @endforeach
               </select>
             </td>
           </tr>
@@ -72,9 +100,10 @@
             </td>
             <td>
               <select name="color" id="" class="border-0 shadow-md ml-3 mt-4">
-                <option value="">Select Size</option>
-                <option value="">Xl</option>
-                <option value="">M</option>
+                <option selected disabled>Select Size</option>
+                @foreach ($sizes as $size)
+                  <option value="{{$size}}">{{$size}}</option> 
+                @endforeach
               </select>
             </td>
           </tr>
@@ -99,6 +128,16 @@
             </td>
             
           </tr>
+          @if($product->stock < 1)
+            <tr>
+              <td>
+                <p class="text-red-500  text-lg mt-2">
+                  <sup >*</sup>Out of Stock
+                </p>
+              </td>
+              
+            </tr>
+          @endif
           
         </table>
         <div class="mt-4 flex justify-around">
@@ -122,7 +161,7 @@
             About this item
           </p>
           <p class="text-gray-600">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio id sunt accusantium. Necessitatibus, sint ratione? Laboriosam repellat tenetur animi repellendus, temporibus dicta a explicabo atque, corporis laudantium recusandae nesciunt veritatis.
+             {{$product->description}}
           </p>
         </div>
         

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SlideshowController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[FrontendController::class,'home'])->name('home');
+Route::get('/product/quicklook/{id}',[FrontendController::class,'view'])->name('view');
 
-Route::get('/view', function () {
-    return view('view');
-});
 
 
 Route::get('/dashboard', function () {

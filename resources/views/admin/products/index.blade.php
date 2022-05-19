@@ -40,6 +40,10 @@
                     </td>
 
                     <td class="py-2 border border-gray-300 px-2 w-32">
+                        Gender
+                    </td>
+
+                    <td class="py-2 border border-gray-300 px-2 w-32">
                         Image
                     </td>
 
@@ -77,6 +81,10 @@
                    
                     <td class="py-2 border border-gray-300 px-2 w-44">
                         {{$product->name}}
+                    </td>
+
+                    <td class="py-2 border border-gray-300 px-2 w-44">
+                        {{$product->gender}}
                     </td>
 
                     <td class="py-2 border border-gray-300 px-2 w-44">

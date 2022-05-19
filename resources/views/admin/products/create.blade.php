@@ -41,6 +41,21 @@
                 </div>
 
                 <div class="my-2 mt-5">
+                    <label class="text-gray-500">Select Gender</label>
+
+                    <select  name="gender" id="" class="w-full border-none shadow-lg rounded-md placeholder:text-gray-700 focus:ring-amber-500">
+                        <option disabled selected>-- Select Gender --</option>
+                        <option value="mens">Mens</option>
+                        <option value="womens">Womens</option>
+                    </select>
+                    @error('gender')
+                        <p class="text-red-500 p-2">
+                            {{$message}}
+                        </p>
+                    @enderror
+                </div>
+
+                <div class="my-2 mt-5">
                     <label class="text-gray-500">Enter SKU Number</label>
                     <input type="text" name="sku" id="" class="w-full border-none shadow-lg rounded-md placeholder:text-gray-700 focus:ring-amber-500" placeholder="Enter SKU number" value="{{old('sku')}}">
                     @error('sku')
@@ -71,6 +86,8 @@
                 </div>
 
                 <div class="my-2 mt-5">
+                    <label class="text-gray-500">Is Available</label>
+
                     <select  name="isAvailable" id="" class="w-full border-none shadow-lg rounded-md placeholder:text-gray-700 focus:ring-amber-500">
                         <option disabled selected>-- Is Available --</option>
                             <option value="1">Yes</option>
@@ -84,6 +101,8 @@
                 </div>
 
                 <div class="my-2 mt-5">
+                    <label class="text-gray-500">Is Discounted</label>
+
                     <select  name="isDiscounted" id="" class="w-full border-none shadow-lg rounded-md placeholder:text-gray-700 focus:ring-amber-500">
                         <option disabled selected>-- Is Discounted --</option>
                             <option value="1" >Yes

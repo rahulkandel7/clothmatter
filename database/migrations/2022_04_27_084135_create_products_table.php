@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('color');
             $table->string('brand');
             $table->string('size');
+            $table->string('gender');
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

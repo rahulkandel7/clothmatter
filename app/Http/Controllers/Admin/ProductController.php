@@ -57,6 +57,7 @@ class ProductController extends Controller
             'brand' => ['required','string'] ,
             'size' => ['required','string'] ,
             'category_id' => ['required'],
+            'gender' => ['required'],
         ]);
 
         if($request->has('photopath1')){
@@ -145,6 +146,7 @@ class ProductController extends Controller
             'color' => ['required','string'],
             'brand' => ['required','string'] ,
             'size' => ['required','string'] ,
+            'gender' => ['required','string'] ,
             'category_id' => ['required'],
         ]);
 

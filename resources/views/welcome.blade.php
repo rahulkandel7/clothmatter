@@ -25,18 +25,13 @@
     <!-- Swiper -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide ">
-            <img src="{{asset('images/bg.jpeg')}}" class="h-auto">
-            
-          </div>
-          <div class="swiper-slide ">
-            <img src="{{asset('images/bg.jpeg')}}" class="h-auto">
-            
-          </div>
-          <div class="swiper-slide ">
-            <img src="{{asset('images/bg.jpeg')}}" class="h-auto">
-            
-          </div>
+            @foreach ($slideshows as $slideshow)
+                <div class="swiper-slide ">
+                    <img src="/storage/{{$slideshow->photopath}}" class="h-auto">
+                </div>
+            @endforeach
+          
+          
         </div>
     </div>
 
@@ -76,168 +71,32 @@
         </h1>
 
         <div class="grid grid-cols-4 gap-10 my-10">
+            @foreach ($womens as $women)
                 {{-- Items Open --}}
                     <div class="shadow-md group hover:shadow-lg  img">
                         <div class="relative">
-                            <img src="{{asset('images/products/1.jpeg')}}" class="rounded-md h-64 w-full">
+                            <img src="/storage/{{$women->photopath1}}" class="rounded-md h-64 w-full">
                             <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
 
-                                    <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
+                                    <a href="{{route('view',$women->id)}}" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</a>
 
                             </div>
                         </div>
                         <div class="flex justify-center">
-                            <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                                Long Sleeve TShirt
+                            <a href="{{route('view',$women->id)}}"  class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
+                                {{$women->name}}
                             </a>
                         </div>
                         <p class="text-center text-gray-600 font-bold pb-2">
-                            Rs 500
+                            @if($women->isDiscounted == 1) <span class="line-through text-sm">Rs {{$women->price}}</span> Rs {{$women->discountedPrice}} @else Rs {{$women->price}} @endif 
+                            
                         </p>
                         
                     </div>
                 {{-- Items Close --}}
+            @endforeach
 
-                {{-- Items Open --}}
-                    <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/2.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                    </div>
-                {{-- Items Close --}}
-
-                {{-- Items Open --}}
-                    <div class="shadow-md group hover:shadow-lg  img">
-                        <div class="relative">
-                            <img src="{{asset('images/products/3.jpeg')}}" class="rounded-md h-64 w-full">
-                            <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                                <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                                Long Sleeve TShirt
-                            </a>
-                        </div>
-                        <p class="text-center text-gray-600 font-bold pb-2">
-                            Rs 500
-                        </p>
-                        
-                    </div>
-                {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/4.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/5.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/1.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/2.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/3.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
+                
         </div>
 
         <div class="flex justify-center">
@@ -262,167 +121,30 @@
         </h1>
 
         <div class="grid grid-cols-4 gap-10 my-10">
+            @foreach ($mens as $men)
                 {{-- Items Open --}}
                     <div class="shadow-md group hover:shadow-lg  img">
                         <div class="relative">
-                            <img src="{{asset('images/products/1.jpeg')}}" class="rounded-md h-64 w-full">
+                            <img src="/storage/{{$men->photopath1}}" class="rounded-md h-64 w-full">
                             <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
 
-                                    <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
+                                    <a href="{{route('view',$men->id)}}" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</a>
 
                             </div>
                         </div>
                         <div class="flex justify-center">
-                            <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                                Long Sleeve TShirt
+                            <a href="{{route('view',$men->id)}}"  class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
+                                {{$men->name}}
                             </a>
                         </div>
                         <p class="text-center text-gray-600 font-bold pb-2">
-                            Rs 500
+                            @if($men->isDiscounted == 1) <span class="line-through text-sm">Rs {{$men->price}}</span> Rs {{$men->discountedPrice}} @else Rs {{$men->price}} @endif 
+                            
                         </p>
                         
                     </div>
                 {{-- Items Close --}}
-
-                {{-- Items Open --}}
-                    <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/2.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                    </div>
-                {{-- Items Close --}}
-
-                {{-- Items Open --}}
-                    <div class="shadow-md group hover:shadow-lg  img">
-                        <div class="relative">
-                            <img src="{{asset('images/products/3.jpeg')}}" class="rounded-md h-64 w-full">
-                            <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                                <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-center">
-                            <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                                Long Sleeve TShirt
-                            </a>
-                        </div>
-                        <p class="text-center text-gray-600 font-bold pb-2">
-                            Rs 500
-                        </p>
-                        
-                    </div>
-                {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/4.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/5.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/1.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/2.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
-
-            {{-- Items Open --}}
-                <div class="shadow-md group hover:shadow-lg  img">
-                    <div class="relative">
-                        <img src="{{asset('images/products/3.jpeg')}}" class="rounded-md h-64 w-full">
-                        <div class="absolute hidden group-hover:block right-[30%] bottom-2 animate__animated animate__fadeInUp">
-                            <button type="submit" class="px-6 py-1 rounded-full bg-indigo-400 text-white hover:bg-indigo-600">Quick Look</button>
-                        </div>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="#" class="text-xl font-bold pt-3 text-center hover:text-indigo-500">
-                            Long Sleeve TShirt
-                        </a>
-                    </div>
-                    <p class="text-center text-gray-600 font-bold pb-2">
-                        Rs 500
-                    </p>
-                    
-                </div>
-            {{-- Items Close --}}
+            @endforeach
 
         </div>
 
